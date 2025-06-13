@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
+    "build": "pnpm format && pnpm typecheck && tsc -p tsconfig.json",
     "generate": "prisma generate",
-    "dev": "node index.js",
+    "dev": "node build/index.js",
     "format": "biome check --write",
     "typecheck": "tsc --noEmit"
   },
