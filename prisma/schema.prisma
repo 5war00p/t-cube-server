@@ -13,3 +13,50 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String // hashed
+  createdAt DateTime @default(now())
+  chats     Chat[]
+}
+
+model Chat {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id])
+  createdAt DateTime  @default(now())
+  title     String?
+  messages  Message[]
+}
+
+model Message {
+  id        String           @id @default(uuid())
+  chatId    String
+  chat      Chat             @relation(fields: [chatId], references: [id])
+  createdAt DateTime         @default(now())
+  sender    Sender
+  modelUsed String // e.g., gpt-4, gpt-3.5, claude, etc.
+  elements  MessageElement[]
+}
+
+model MessageElement {
+  id        String      @id @default(uuid())
+  messageId String
+  message   Message     @relation(fields: [messageId], references: [id])
+  type      MessageType
+  content   String // actual content or metadata (e.g. URL for attachments)
+}
+
+enum MessageType {
+  TEXT
+  CODE
+  ATTACHMENT
+  WEB_SEARCH
+}
+
+enum Sender {
+  USER
+  SYSTEM
+}

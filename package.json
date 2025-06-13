@@ -1,38 +1,38 @@
 {
-  "name": "t-cube-server",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-    "build": "pnpm format && pnpm typecheck && tsc -p tsconfig.json",
-    "generate": "prisma generate",
-    "dev": "node build/index.js",
-    "format": "biome check --write",
-    "typecheck": "tsc --noEmit"
-  },
-  "keywords": [],
-  "author": "Swaroop",
-  "contributors": [
-    {
-      "name": "Swaroop Maddi",
-      "email": "maddisaiswaroop@gmail.com"
-    },
-    {
-      "name": "Mahesh Vagicherla",
-      "email": "maheshvagicherla99438@gmail.com"
-    }
-  ],
-  "license": "MIT",
-  "description": "API Server",
-  "dependencies": {
-    "@prisma/client": "6.9.0",
-    "fastify": "^5.4.0",
-    "pg": "^8.16.0"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "1.9.4",
-    "@types/node": "^24.0.1",
-    "@types/pg": "^8.15.4",
-    "prisma": "^6.9.0",
-    "typescript": "^5.8.3"
-  }
+	"name": "t-cube-server",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"build": "pnpm format && pnpm typecheck && tsc -p tsconfig.json",
+		"generate": "prisma generate",
+		"dev": "node build/index.js",
+		"format": "biome check --write",
+		"typecheck": "tsc --noEmit"
+	},
+	"keywords": [],
+	"author": "Swaroop",
+	"contributors": [
+		{
+			"name": "Swaroop Maddi",
+			"email": "maddisaiswaroop@gmail.com"
+		},
+		{
+			"name": "Mahesh Vagicherla",
+			"email": "maheshvagicherla99438@gmail.com"
+		}
+	],
+	"license": "MIT",
+	"description": "API Server",
+	"dependencies": {
+		"@prisma/client": "6.9.0",
+		"fastify": "^5.4.0",
+		"pg": "^8.16.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "1.9.4",
+		"@types/node": "^24.0.1",
+		"@types/pg": "^8.15.4",
+		"prisma": "^6.9.0",
+		"typescript": "^5.8.3"
+	}
 }
