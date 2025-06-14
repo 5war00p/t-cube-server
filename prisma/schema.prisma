@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  output   = "../node_modules/.prisma/client"
 }
 
 datasource db {
@@ -15,10 +15,12 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
   password  String // hashed
-  createdAt DateTime @default(now())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
   chats     Chat[]
 }
 
@@ -27,6 +29,8 @@ model Chat {
   userId    String
   user      User      @relation(fields: [userId], references: [id])
   createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  deletedAt DateTime?
   title     String?
   messages  Message[]
 }
@@ -36,6 +40,8 @@ model Message {
   chatId    String
   chat      Chat             @relation(fields: [chatId], references: [id])
   createdAt DateTime         @default(now())
+  updatedAt DateTime         @updatedAt
+  deletedAt DateTime?
   sender    Sender
   modelUsed String // e.g., gpt-4, gpt-3.5, claude, etc.
   elements  MessageElement[]
